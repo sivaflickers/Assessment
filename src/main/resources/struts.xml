@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE struts PUBLIC
+   "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+   "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+   <constant name = "struts.devMode" value = "true" />
+   
+   <package name = "helloworld" extends = "struts-default">
+     <action name = "hello" 
+         class = "com.att.digicustomer.HelloWorldAction" 
+         method = "execute">
+         <result name = "success">/HelloWorld.jsp</result>
+      </action>
+      
+      <action name = "uservalidation" 
+         class = "com.att.digicustomer.action.AuthenticationAction" 
+         method = "validateAccess">
+         <result name = "success" type = "redirect">jsp/HomePage.jsp</result>
+         <result name="error" type = "redirect">jsp/AccessDenied.jsp</result>
+      </action>
+      
+      <action name = "relogin" 
+         class = "com.att.digicustomer.action.AuthenticationAction" 
+         method = "relogin">
+         <result name = "success" type = "redirect">/index.jsp</result>
+         
+      </action>
+
+			<action name="addProductRedirect" method="addProductRedirect" class="com.att.digicustomer.action.AdminAction">
+			<result name="success">../jsp/AddProduct.jsp</result>
+		</action>
+		<action name="addProduct" method="addProduct" class="com.att.digicustomer.action.AdminAction">
+			<result name="success">../jsp/AddProduct.jsp</result>
+		</action>
+		
+		<action name="homePage" method="homePage" class="com.att.digicustomer.action.AdminAction">
+			<result name="success">../jsp/HomePage.jsp</result>
+		</action>
+		<action name="deleteProduct" method="deleteProduct" class="com.att.digicustomer.action.AdminAction">
+			<result name="success">../jsp/HomePage.jsp</result>
+		</action>
+		<action name="updateProduct" method="updateProduct" class="com.att.digicustomer.action.AdminAction">
+			<result name="success">../jsp/UpdateProduct.jsp</result>
+		</action>
+	
+   </package>
+</struts>
